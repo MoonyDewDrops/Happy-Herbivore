@@ -1,12 +1,17 @@
 <?php
-$servername = "localhost";
+$dsn = "mysql:host=localhost;dbname=happy_herbivore;charset=utf8mb4";
 $username = "root";
 $password = "";
-$dbname = "happy_herbivore";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    //create pdo instance
+    $pdo = new PDO($dsn, $username, $password, [
+        //enabling error handling
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, 
+        //fetching results as an associative array (my beloved <3)
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    ]);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }
 ?>
