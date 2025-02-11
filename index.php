@@ -43,7 +43,9 @@ if ($products) {?>
             ?>
 
 
-           <!-- using htmlspecialchars for these since apparently thats better -->
+        <!-- using htmlspecialchars for these since apparently thats better -->
+        <!-- This is bassically just writing the image path, and then proceeding to echo the thingie
+        I do the echo part infront of it, because with the special chars it is needed. otherwise the $image doesnt do nun -->
         <img src='assets/img/<?php echo htmlspecialchars($image['filename'])?>' 
         alt='<?php echo htmlspecialchars($image['description'])?>'
         style='width:100px;height:auto;'> <br>
