@@ -9,6 +9,37 @@ if (!empty($_GET['category_id'])) {
 
 include_once 'connection.php';
 
+//checking if there's a post of a product the user wants to add to the cart!
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add_to_cart"])) {
+    $product_id = $_POST["product_id"];
+    $quantity = intval($_POST["quantity"]);
+
+    //Fetching product data so we can correctly put it in the session!!
+    $stmtSession = $pdo->prepare("SELECT * FROM products WHERE product_id = :product_id");
+    $stmtSession->bindParam(":product_id", $product_id, PDO::PARAM_INT);
+    $stmtSession->execute();
+    $product = $stmtSession->fetch();
+
+    if ($product) {
+        //Create a cart session if it doesnt already exist
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = [];
+        }
+
+        //If said product is already in the cart, update the quantity of the product in said cart
+        if (isset($_SESSION['cart'][$product_id])) {
+            $_SESSION['cart'][$product_id]['quantity'] += $quantity;
+        } else {
+            //Else we add a new entry
+            $_SESSION['cart'][$product_id] = [
+                'name' => $product['name'],
+                'price' => $product['price'],
+                'quantity' => $quantity
+            ];
+        }
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +52,11 @@ include_once 'connection.php';
 </head>
 
 <body>
+    <h2>Discard order?</h2>
+    <a href="clear_cart.php">Discard</a>
+    
+    <h2>Cart</h2>
+    <a href="cart.php">Go to cart!</a>
 
     <?php
     $sqlCategories = "SELECT * FROM categories";
@@ -101,7 +137,7 @@ include_once 'connection.php';
                         Description: <?php echo htmlspecialchars($product['description']) ?> <br>
                         Price: <?php echo htmlspecialchars($product['price']) ?> <br>
                         Kcal: <?php echo htmlspecialchars($product['kcal']) ?> <br>
-                        <a href='product.php?product_id=<?php echo htmlspecialchars($product['product_id'])?>'>Order</a>
+                        <a href='product.php?product_id=<?php echo htmlspecialchars($product['product_id']) ?>'>Order</a>
                         <br>
                     </li>
 
@@ -117,7 +153,7 @@ include_once 'connection.php';
         echo "No products found.";
     }
     ?>
-
+    <script src="assets/js/js.js"></script>
 </body>
 
 </html>

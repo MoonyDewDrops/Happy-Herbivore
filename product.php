@@ -15,20 +15,20 @@ include_once 'connection.php';
     <?php
     if (!empty($_GET['product_id'])) {
 
-    $product_id = $_GET['product_id'];
+        $product_id = $_GET['product_id'];
 
-    //Fetch all products
-    $sql = "SELECT * FROM products";
-    //excecute stmt
-    $stmt = $pdo->query($sql);
-    //put all the information of the products tabel into the variable of products
-    $products = $stmt->fetchAll();
+        //Fetch all products
+        $sql = "SELECT * FROM products";
+        //excecute stmt
+        $stmt = $pdo->query($sql);
+        //put all the information of the products tabel into the variable of products
+        $products = $stmt->fetchAll();
 
-    //if products get returned n there's something in there, display the stuff!!
-    if ($products){
-        foreach ($products as $product){
-            if ($product['product_id'] == $product_id) {?>
-                <li>
+        //if products get returned n there's something in there, display the stuff!!
+        if ($products) {
+            foreach ($products as $product) {
+                if ($product['product_id'] == $product_id) { ?>
+                    <li>
                         <?php
 
                         //Fetching the image details
@@ -47,34 +47,35 @@ include_once 'connection.php';
                         ?>
 
 
-                            <!-- using htmlspecialchars for these since apparently thats better -->
-                            <!-- This is bassically just writing the image path, and then proceeding to echo the thingie I do the -->
-                            <!-- echo part infront of it, because with the special chars it is needed. otherwise the $image doesnt do nun -->
+
                             <img src='assets/img/<?php echo htmlspecialchars($image['filename']) ?>'
                                 alt='<?php echo htmlspecialchars($image['description']) ?>'
                                 style='width:100px;height:auto;'> <br>
 
                         <?php } ?>
 
-                        ID: <?php echo htmlspecialchars($product['image_id']) ?> <br>
+
                         Name: <?php echo htmlspecialchars($product['name']) ?> <br>
                         Description: <?php echo htmlspecialchars($product['description']) ?> <br>
                         Price: <?php echo htmlspecialchars($product['price']) ?> <br>
-                        Kcal: <?php echo htmlspecialchars($product['kcal']) ?> <br>
+                        <form action="index.php" method="post">
+                            <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" name="quantity" id="quantity" value="1" min="1" max="99"> <br>
+                            <button type="submit" name="add_to_cart">Add to Cart</button>
+                        </form>
                         <a href="index.php?category_id=<?php echo htmlspecialchars($product['category_id']) ?>">Go back</a>
-                        
+
                         <br>
                     </li>
-                    <?php
+    <?php
+                }
             }
         }
-    }
-
-        
     } else {
         echo 'product not found!';
     }
-    ?> 
+    ?>
 
 </body>
 </html>
