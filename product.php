@@ -58,7 +58,7 @@ include_once 'connection.php';
                         Name: <?php echo htmlspecialchars($product['name']) ?> <br>
                         Description: <?php echo htmlspecialchars($product['description']) ?> <br>
                         Price: <?php echo htmlspecialchars($product['price']) ?> <br>
-                        <form action="index.php" method="post">
+                        <form action="index.php?category_id=<?php echo htmlspecialchars($product['category_id']) ?>" method="post">
                             <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                             <label for="quantity">Quantity:</label>
                             <input type="number" name="quantity" id="quantity" value="1" min="1" max="99"> <br>

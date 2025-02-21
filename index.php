@@ -10,7 +10,15 @@ if (!empty($_GET['category_id'])) {
 include_once 'connection.php';
 
 //checking if there's a post of a product the user wants to add to the cart!
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add_to_cart"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["dineIn"])){
+        $_SESSION['dineChoice'] = $_POST['dineIn'];
+
+    } else if (isset($_POST["dineOut"])){
+        $_SESSION['dineChoice'] = $_POST['dineOut'];
+    }
+    
+    if (isset($_POST["add_to_cart"])) {
     $product_id = $_POST["product_id"];
     $quantity = intval($_POST["quantity"]);
 
@@ -39,6 +47,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add_to_cart"])) {
         }
     }
 }
+}
+
+if (!empty($_SESSION['cart'])) { 
+    $totalPrice = 0;
+    foreach ($_SESSION['cart'] as $product_id => $item) {
+        $productPriceAddedUp = $item['price'] * $item['quantity'];
+        $formatedProductPrice = number_format($productPriceAddedUp, 2, ',', '');
+        $totalPrice += $productPriceAddedUp;
+        $formattedTotalPrice = number_format($totalPrice, 2, ',', '');
+    }
+} else {
+    $formattedTotalPrice = "0,00";
+}
+  
 
 ?>
 
@@ -56,6 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["add_to_cart"])) {
     <a href="clear_cart.php">Discard</a>
     
     <h2>Cart</h2>
+    <?=$formattedTotalPrice?> <br>
     <a href="cart.php">Go to cart!</a>
 
     <?php
