@@ -1,0 +1,18 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: kiosk
+    restart: always
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: happy_herbivore
+      MYSQL_PASSWORD: ""
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./assets/sql/happy_herbivore.sql:/docker-entrypoint-initdb.d/happy_herbivore.sql
+
+volumes:
+  mysql_data:
+    driver: local
