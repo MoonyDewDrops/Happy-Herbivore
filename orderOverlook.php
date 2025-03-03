@@ -24,6 +24,11 @@ if (isset($_SESSION['finalOrderNumber'])){
         <a href="clear_cart.php">Go to start screen!</a>
     </div>
 
+    <script>
+        setTimeout(function() {
+            window.location.href = 'start.php';
+        }, 5000);
+    </script>
 
 </body>
 </html>
