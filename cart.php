@@ -72,9 +72,7 @@ include_once 'connection.php';
                 } ?>
             </ul>
         </div>
-        Total: <?php
-                echo $formattedTotalPrice;
-                ?>
+        <p id="cart-total">Total: €<?php echo $formattedTotalPrice; ?></p>
 
         <form action="finishOrder.php">
             <button type="submit" name="finishOrder">Checkout</button>
