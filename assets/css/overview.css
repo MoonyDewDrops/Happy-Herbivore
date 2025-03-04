@@ -1,0 +1,33 @@
+h2 {
+    font-size: 100px;
+}
+
+.page-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.categories {
+    grid-column: 1;
+}
+
+.category {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+}
+
+.category-img {
+    width: 300px;
+    height: auto;
+}
+
+.category-txt {
+    font-size: 70px;
+    color: black;
+}
+
+.products {
+    grid-column: 2 / span 2;
+}
