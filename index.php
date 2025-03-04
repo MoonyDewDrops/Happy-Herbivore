@@ -89,7 +89,7 @@ if (!empty($_SESSION['cart'])) {
             if ($categories) {
 
             ?>
-                <ul>
+                <ul class="category-list">
                     <?php
                     foreach ($categories as $category) {
                         //Image thing is temporary, need to do some wack complicated shi to load in the 1st image normally so yk this will change later
@@ -181,20 +181,18 @@ if (!empty($_SESSION['cart'])) {
         </div>
     </div>
 
-    <div class="footer"></div>
+    <footer class="footer">
+        <a href="clear_cart.php" class="cancel">
+            <p>Cancel order</p>
+        </a>
 
+        <img class="logo" src="assets/img/logodino.webp" alt="logo">
 
-
-
-
-
-
-    <h2>Discard order?</h2>
-    <a href="clear_cart.php">Discard</a>
-
-    <h2>Cart</h2>
-    <?= $formattedTotalPrice ?> <br>
-    <a href="cart.php">Go to cart!</a>
+        <a href="cart.php" class="cart">
+            <?= $formattedTotalPrice ?>
+            <p>Cart</p>
+        </a>
+    </footer>
 
     <script src="assets/js/js.js"></script>
 </body>
