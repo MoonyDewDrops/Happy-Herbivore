@@ -89,7 +89,6 @@ if (!empty($_SESSION['cart'])) {
             if ($categories) {
 
             ?>
-                <h2>Categories</h2>
                 <ul>
                     <?php
                     foreach ($categories as $category) {
@@ -123,7 +122,7 @@ if (!empty($_SESSION['cart'])) {
             if ($products) { ?>
 
                 <h2>Products</h2>
-                <ul>
+                <ul class="products-list">
                     <?php
                     foreach ($products as $product) {
                         if ($_SESSION['category_id'] && $product['category_id'] == $_SESSION['category_id']) {
@@ -148,19 +147,23 @@ if (!empty($_SESSION['cart'])) {
                                     <!-- using htmlspecialchars for these since apparently thats better -->
                                     <!-- This is bassically just writing the image path, and then proceeding to echo the thingie
         I do the echo part infront of it, because with the special chars it is needed. otherwise the $image doesnt do nun -->
-                                    <img src='assets/img/<?php echo htmlspecialchars($image['filename']) ?>'
-                                        alt='<?php echo htmlspecialchars($image['description']) ?>'
-                                        style='width:100px;height:auto;'> <br>
+                                    <div class="product">
+                                        <img class="product-img"
+                                            src='assets/img/<?php echo htmlspecialchars($image['filename']) ?>'
+                                            alt='<?php echo htmlspecialchars($image['description']) ?>'> <br>
 
-                                <?php } ?>
+                                    <?php } ?>
+                                    <p class="product-txt">Name: <?php echo htmlspecialchars($product['name']) ?> <br></p>
 
-                                ID: <?php echo htmlspecialchars($product['image_id']) ?> <br>
-                                Name: <?php echo htmlspecialchars($product['name']) ?> <br>
-                                Description: <?php echo htmlspecialchars($product['description']) ?> <br>
-                                Price: <?php echo htmlspecialchars($product['price']) ?> <br>
-                                Kcal: <?php echo htmlspecialchars($product['kcal']) ?> <br>
-                                <a href='product.php?product_id=<?php echo htmlspecialchars($product['product_id']) ?>'>Order</a>
-                                <br>
+                                    <div class="price-and-kcal">
+                                        <p class="product-txt">Price: <?php echo htmlspecialchars($product['price']) ?> <br></p>
+                                        <p class="product-txt">Kcal: <?php echo htmlspecialchars($product['kcal']) ?> <br></p>
+                                    </div>
+
+                                    <a class="order" href='product.php?product_id=<?php echo htmlspecialchars($product['product_id']) ?>'>
+                                        <p>Order</p>
+                                    </a>
+                                    </div>
                             </li>
 
                     <?php
