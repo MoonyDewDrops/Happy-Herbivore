@@ -1,0 +1,61 @@
+.start-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 200px;
+}
+
+.food {
+    height: 1500px;
+    width: auto;
+}
+
+h1 {
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+
+.dining-options {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+
+.button {
+    width: 500px;
+    height: 600px;
+    font-size: 80px;
+    background-color: #FFB181;
+    border: none;
+    border-radius: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    filter: drop-shadow(10px 10px 20px black);
+}
+
+.option-img {
+    height: 300px;
+    width: auto;
+}
+
+.text-and-arrow {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.arrow {
+    width: 100px;
+    height: auto;
+}
