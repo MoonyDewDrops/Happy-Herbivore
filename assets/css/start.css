@@ -44,6 +44,10 @@ h1 {
     filter: drop-shadow(10px 10px 20px black);
 }
 
+.button:active {
+    transform: scale(0.90);
+}
+
 .option-img {
     height: 300px;
     width: auto;

@@ -32,7 +32,7 @@ include_once 'connection.php';
                     <button class="button" type="submit" name="dineChoiceButton">
                         <img class="option-img" src="assets/img/tray.png" alt="tray">
                         <div class="text-and-arrow">
-                            Dine in
+                            <p>Dine in</p>
                             <img class="arrow" src="assets/img/arrow-right.svg" alt="arrow-right">
                         </div>
                     </button>
@@ -43,7 +43,7 @@ include_once 'connection.php';
                     <button class="button" type="submit" name="dineChoiceButton">
                         <img class="option-img" src="assets/img/paper-bag.png" alt="paper-bag">
                         <div class="text-and-arrow">
-                            Take out
+                            <p>Take out</p>
                             <img class="arrow" src="assets/img/arrow-right.svg" alt="arrow-right">
                         </div>
                     </button>
