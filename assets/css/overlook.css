@@ -1,0 +1,26 @@
+p {
+    color: black;
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.text  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+.button {
+    background-color: #FF7520;
+    width: fit-content;
+    text-decoration: none;
+    color: black;
+    font-size: 100px;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    font-style: normal;
+    padding-block: 30px;
+    padding-inline: 50px;
+    border-radius: 100px;
+}
