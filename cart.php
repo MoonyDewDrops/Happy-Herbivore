@@ -88,8 +88,9 @@ include_once 'connection.php';
             </form>
         </footer>
     <?php
-    } else {
-        echo "Your cart is empty!";
+    } else { ?>
+        <p class="empty">Your cart is empty!</p>
+    <?php
     }
     ?>
     <script src="assets/js/js.js"></script>

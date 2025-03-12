@@ -153,7 +153,7 @@ if (!empty($_SESSION['cart'])) {
                                             alt='<?php echo htmlspecialchars($image['description']) ?>'> <br>
 
                                     <?php } ?>
-                                    <p class="product-txt">Name: <?php echo htmlspecialchars($product['name']) ?> <br></p>
+                                    <p class="product-txt"><?php echo htmlspecialchars($product['name']) ?> <br></p>
 
                                     <div class="price-and-kcal">
                                         <p class="product-txt">Price: <?php echo htmlspecialchars($product['price']) ?> <br></p>
