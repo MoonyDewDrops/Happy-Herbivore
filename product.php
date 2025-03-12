@@ -10,10 +10,14 @@ include_once 'connection.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/product.css">
     <title>Document</title>
 </head>
 
 <body>
+    <?php include 'header.php' ?>
     <?php
     if (!empty($_GET['product_id'])) {
 
@@ -44,33 +48,46 @@ include_once 'connection.php';
                         //fetch() since its only one row
                         $image = $stmt2->fetch();
 
-                        //display image if we find it!!
-                        if ($image) {
                         ?>
+                        <div class="name-and-img">
+                            <div class="info">
+                                <h1 class="name"><?php echo htmlspecialchars($product['name']) ?></h1>
+                                <p class="description">Description: <?php echo htmlspecialchars($product['description']) ?></p>
+                            </div>
 
+                            <?php
+                            //display image if we find it!!
+                            if ($image) {
+                            ?>
+                                <img class="img" src='assets/img/<?php echo htmlspecialchars($image['filename']) ?>'
+                                    alt='<?php echo htmlspecialchars($image['description']) ?>'> <br>
 
+                            <?php } ?>
+                        </div>
 
-                            <img src='assets/img/<?php echo htmlspecialchars($image['filename']) ?>'
-                                alt='<?php echo htmlspecialchars($image['description']) ?>'
-                                style='width:100px;height:auto;'> <br>
+                        <div class="add-item">
+                            <p class="price"><span id="total-price">€<?php echo number_format($product['price'], 2, ',', ''); ?></span></p>
 
-                        <?php } ?>
+                            <form class="form" action="index.php?category_id=<?php echo htmlspecialchars($product['category_id']) ?>" method="post" id="product-form">
+                                <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                                <button type="button" class="minus">-</button>
+                                <input class="quantity" type="number" name="quantity" id="quantity" value="1" min="1" max="99" readonly>
+                                <button type="button" class="plus">+</button>
 
+                        </div>
 
-                        Name: <?php echo htmlspecialchars($product['name']) ?> <br>
-                        Description: <?php echo htmlspecialchars($product['description']) ?> <br>
-                        Price: <?php echo htmlspecialchars($product['price']) ?> <br>
-                        <form action="index.php?category_id=<?php echo htmlspecialchars($product['category_id']) ?>" method="post" id="product-form">
-                            <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
-                            <label for="quantity">Quantity:</label>
-                            <button type="button" class="minus">-</button>
-                            <input type="number" name="quantity" id="quantity" value="1" min="1" max="99" readonly>
-                            <button type="button" class="plus">+</button> <br>
-                            <p>Total Price: <span id="total-price">€<?php echo number_format($product['price'], 2, ',', ''); ?></span></p>
-                            <button type="submit" name="add_to_cart">Add to Cart</button>
+                        <footer class="footer">
+                            <a href="index.php?category_id=<?php echo htmlspecialchars($product['category_id']) ?>" class="cancel">
+                                <p>Go back</p>
+                            </a>
+
+                            <img class="logo" src="assets/img/logodino.webp" alt="logo">
+
+                            <button class="cart" type="submit" name="add_to_cart">Add to Cart</button>
+
+                        </footer>
                         </form>
 
-                        <a href="index.php?category_id=<?php echo htmlspecialchars($product['category_id']) ?>">Go back</a>
 
                         <br>
                     </li>

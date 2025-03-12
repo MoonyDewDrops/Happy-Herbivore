@@ -1,62 +1,72 @@
-h1 {
-    font-size: 100px;
+.name-and-img {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
     text-align: center;
+    gap: 40px;
+    padding-inline: 30px;
 }
 
-#cart-list {
+.name {
+    font-size: 90px;
+}
+
+.description {
+    font-size: 60px;
+}
+
+.info {
     display: flex;
     flex-direction: column;
     gap: 40px;
 }
 
-.products {
+.price {
+    background-color: #FF7520;
+    width: 30%;
+    text-decoration: none;
+    color: black;
+    font-size: 100px;
+    font-family: "Lato", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    padding-block: 40px;
+    border-radius: 100px;
+    text-align: center;
+}
+
+.add-item {
     display: flex;
     flex-direction: column;
+    gap: 40px;
     align-items: center;
-    gap: 100px;
-}
-
-.product-info {
-    display: flex;
-    font-size: 60px;
-    justify-content: space-between;
-    background-color: white;
-    width: 1500px;
-    border-radius: 50px 50px 0px 0px;
-    padding-inline: 50px;
-    padding-block: 30px;
-    border: 2px solid black;
-}
-
-.amount {
-    display: flex;
-    gap: 20px;
-    background-color: white;
-    width: 1500px;
-    border-radius: 0px 0px 50px 50px;
-    padding-inline: 50px;
-    padding-block: 30px;
-    border: 2px solid black;
-
+    justify-content: center;
 }
 
 .quantity {
-    font-size: 60px;
     background-color: #FFB181;
-    width: 70px;
-    height: 70px;
-    text-align: center;
+    width: 150px;
+    height: 150px;
+    font-size: 100px;
     border-radius: 20px;
+    text-align: center;
+    border: none;
 }
 
-.minus, .plus {
-    width: 70px;
-    height: 70px;
-    font-size: 60px;
-    text-align: center;
+.plus, .minus {
     background-color: #FF7520;
-    border: none;
+    width: 150px;
+    height: 150px;
+    font-size: 100px;
     border-radius: 20px;
+    text-align: center;
+    border: none;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    gap: 40px;
 }
 
 .footer {
@@ -76,7 +86,7 @@ h1 {
     width: 600px;
     padding-inline: 40px;
     padding-block: 60px;
-    font-size: 80px;
+    font-size: 100px;
     text-align: center;
     color: #FF7520;
     text-decoration: none;
@@ -93,18 +103,14 @@ h1 {
     width: 600px;
     padding-inline: 40px;
     padding-block: 60px;
-    font-size: 80px;
+    font-size: 100px;
     text-align: center;
     color: black;
     text-decoration: none;
     border-radius: 30px;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
-.empty {
-    font-size: 80px;
-    text-align: center;
-}
+
