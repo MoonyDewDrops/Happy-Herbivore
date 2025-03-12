@@ -72,23 +72,26 @@ include_once 'connection.php';
                 } ?>
             </ul>
         </div>
-        <p id="cart-total">Total: €<?php echo $formattedTotalPrice; ?></p>
 
-        <form action="finishOrder.php">
-            <button type="submit" name="finishOrder">Checkout</button>
-        </form>
+        <footer class="footer">
+            <a href="index.php" class="cancel">
+                <p>Continue ordering</p>
+            </a>
 
-        <br>
-        <!-- not permanent, this needs to only be on the index.php to discrad it -->
-        <a href="clear_cart.php" id="clear-cart">Discard order</a>
+            <img class="logo" src="assets/img/logodino.webp" alt="logo">
+
+            <form action="finishOrder.php">
+                <button class="cart" type="submit" name="finishOrder">
+                    <p id="cart-total">Total: €<?php echo $formattedTotalPrice; ?></p>
+                    <p>Checkout</p>
+                </button>
+            </form>
+        </footer>
     <?php
     } else {
         echo "Your cart is empty!";
     }
     ?>
-
-    <!-- href to go ahead and continue ordering -->
-    <a href="index.php">Continue ordering!</a>
     <script src="assets/js/js.js"></script>
 
 </body>

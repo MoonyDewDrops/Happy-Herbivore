@@ -52,6 +52,7 @@ include_once 'connection.php';
         </div>
     </main>
 
+    <script src="assets/js/imageRotator.js"></script>
 </body>
 
 </html>
