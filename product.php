@@ -6,11 +6,13 @@ include_once 'connection.php';
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <?php
     if (!empty($_GET['product_id'])) {
@@ -58,12 +60,16 @@ include_once 'connection.php';
                         Name: <?php echo htmlspecialchars($product['name']) ?> <br>
                         Description: <?php echo htmlspecialchars($product['description']) ?> <br>
                         Price: <?php echo htmlspecialchars($product['price']) ?> <br>
-                        <form action="index.php?category_id=<?php echo htmlspecialchars($product['category_id']) ?>" method="post">
+                        <form action="index.php?category_id=<?php echo htmlspecialchars($product['category_id']) ?>" method="post" id="product-form">
                             <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                             <label for="quantity">Quantity:</label>
-                            <input type="number" name="quantity" id="quantity" value="1" min="1" max="99"> <br>
+                            <button type="button" class="minus">-</button>
+                            <input type="number" name="quantity" id="quantity" value="1" min="1" max="99" readonly>
+                            <button type="button" class="plus">+</button> <br>
+                            <p>Total Price: <span id="total-price">€<?php echo number_format($product['price'], 2, ',', ''); ?></span></p>
                             <button type="submit" name="add_to_cart">Add to Cart</button>
                         </form>
+
                         <a href="index.php?category_id=<?php echo htmlspecialchars($product['category_id']) ?>">Go back</a>
 
                         <br>
@@ -77,5 +83,8 @@ include_once 'connection.php';
     }
     ?>
 
+    <script src="assets/js/productJS.js"></script>
+
 </body>
+
 </html>
