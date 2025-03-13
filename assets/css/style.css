@@ -14,6 +14,19 @@
 
 body {
   background-color: #DEFF78;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 1 0%;
+}
+
+main.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1, h2, h3, h4 {
@@ -26,7 +39,7 @@ p {
   font-style: normal;
 }
 
-.popup-overlay {
+/* .popup-overlay {
   display: none;
   position: fixed;
   top: 0;
@@ -35,7 +48,7 @@ p {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-}
+} */
   
 .popup-content {
   animation: slideIn 0.3s ease-out;

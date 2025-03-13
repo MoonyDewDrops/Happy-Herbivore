@@ -24,20 +24,22 @@ if (isset($_SESSION['finalOrderNumber'])) {
 <body>
     <?php include 'header.php' ?>
 
-    <div class="text">
-        <p>Order has been placed!</p>
-        <p>Order number: <?= $orderNumber ?></p>
-        <!-- Need to add like a time thigny that sends it back after 5 seconds have passed or so -->
-        <a class="button" href="clear_cart.php">
-            Return to start screen!
-        </a>
-    </div>
+    <main class="centered">
+        <div class="text">
+            <p>Order has been placed!</p>
+            <p>Order number: <?= $orderNumber ?></p>
+            <!-- Need to add like a time thigny that sends it back after 5 seconds have passed or so -->
+            <a class="button" href="clear_cart.php">
+                Return to start screen!
+            </a>
+        </div>
 
-    <script>
-        // setTimeout(function() {
-        //     window.location.href = 'start.php';
-        // }, 5000);
-    </script>
+        <script>
+            // setTimeout(function() {
+            //     window.location.href = 'start.php';
+            // }, 5000);
+        </script>
+    </main>
 
 </body>
 
