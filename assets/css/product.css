@@ -33,6 +33,7 @@
     padding-block: 40px;
     border-radius: 100px;
     text-align: center;
+    filter: drop-shadow(5px 5px 10px black);
 }
 
 .add-item {
