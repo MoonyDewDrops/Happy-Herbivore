@@ -23,22 +23,27 @@ include_once 'connection.php';
 
     <h1>Review your order</h1>
 
-    <div class="popup-overlay" id="clearCartOverlay">
-        <h3>Clear Cart</h3>
-        <p>Do you wish to clear the cart?</p>
-        <div>
-            <button onclick="closePopup('clearCartOverlay')">No</button>
-            <button onclick="confirmClearCart()">Yes</button>
-        </div>
+    <div>
+        <dialog class="popup-overlay" id="clearCartOverlay">
+            <h3>Clear Cart</h3>
+            <p>Do you wish to clear the cart?</p>
+            <div class="btns">
+                <button class="popup-btn" onclick="closePopup('clearCartOverlay')">No</button>
+                <button class="popup-btn" onclick="confirmClearCart()">Yes</button>
+            </div>
+        </dialog>
     </div>
 
-    <div class="popup-overlay" id="removeItemOverlay">
-        <h3>Remove Item</h3>
-        <p>Do you wish to remove this product?</p>
-        <div>
-            <button onclick="closePopup('removeItemOverlay')">No</button>
-            <button id="confirmRemoveItem">Yes</button>
-        </div>
+    <div>
+        <dialog class="popup-overlay" id="removeItemOverlay">
+            <div class="bg-overlay"></div>
+            <h3>Remove Item</h3>
+            <p>Do you wish to remove this product?</p>
+            <div class="btns">
+                <button class="popup-btn" onclick="closePopup('removeItemOverlay')">No</button>
+                <button class="popup-btn" id="confirmRemoveItem">Yes</button>
+            </div>
+        </dialog>
     </div>
 
     <?php

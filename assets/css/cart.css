@@ -108,3 +108,40 @@ h1 {
     font-size: 80px;
     text-align: center;
 }
+
+.popup-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: fit-content;
+    background-color: #FFB181;
+    font-size: 70px;
+    border-radius: 50px;
+    text-align: center;
+    gap: 10px;
+    padding-block: 40px;
+    padding-inline: 20px;
+    z-index: 1000;
+    display: none;
+}
+
+.popup-btn {
+    background-color: #FF7520;
+    border: none;
+    width: 100px;
+    height: 100px;
+    font-size: 60px;
+    border-radius: 20px;
+}
+
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
