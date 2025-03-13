@@ -39,7 +39,7 @@ p {
   font-style: normal;
 }
 
-.popup-overlay {
+/* .popup-overlay {
   display: none;
   position: fixed;
   top: 0;
@@ -48,7 +48,7 @@ p {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-}
+} */
   
 .popup-content {
   animation: slideIn 0.3s ease-out;

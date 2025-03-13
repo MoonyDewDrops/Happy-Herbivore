@@ -21,84 +21,87 @@ include_once 'connection.php';
 <body>
     <?php include 'header.php' ?>
 
-    <h1>Review your order</h1>
+    <main>
+        <h1>Review your order</h1>
 
-    <div>
-        <dialog class="popup-overlay" id="clearCartOverlay">
-            <h3>Clear Cart</h3>
-            <p>Do you wish to clear the cart?</p>
-            <div class="btns">
-                <button class="popup-btn" onclick="closePopup('clearCartOverlay')">No</button>
-                <button class="popup-btn" onclick="confirmClearCart()">Yes</button>
-            </div>
-        </dialog>
-    </div>
-
-    <div>
-        <dialog class="popup-overlay" id="removeItemOverlay">
+        <div id="clearCartOverlay" class="popup-container">
             <div class="bg-overlay"></div>
-            <h3>Remove Item</h3>
-            <p>Do you wish to remove this product?</p>
-            <div class="btns">
-                <button class="popup-btn" onclick="closePopup('removeItemOverlay')">No</button>
-                <button class="popup-btn" id="confirmRemoveItem">Yes</button>
+            <div class="popup-overlay">
+                <h3>Clear Cart</h3>
+                <p>Do you wish to clear the cart?</p>
+                <div class="btns">
+                    <button class="popup-btn" onclick="closePopup('clearCartOverlay')">No</button>
+                    <button class="popup-btn" onclick="confirmClearCart()">Yes</button>
+                </div>
             </div>
-        </dialog>
-    </div>
-
-    <?php
-    if (!empty($_SESSION['cart'])) {
-        // var_dump($_SESSION['cart']);
-    ?>
-        <div class="products">
-            <ul id='cart-list'>
-                <?php
-                $totalPrice = 0;
-                foreach ($_SESSION['cart'] as $product_id => $item) {
-                    $productPriceAddedUp = $item['price'] * $item['quantity'];
-                    $formatedProductPrice = number_format($productPriceAddedUp, 2, ',', '');
-                ?>
-                    <li>
-                        <!-- all the product stuff -->
-                        <div class="product-info">
-                            <p><?php echo $item['name'] ?></p>
-                            <p class='total-price' data-id='<?php echo $product_id ?>'>€ <?= $formatedProductPrice ?></p>
-                        </div>
-
-                        <div class="amount">
-                            <button class='minus' data-id='<?php echo $product_id ?>'>-</button>
-                            <p class='quantity' data-id='<?php echo $product_id ?>'><?php echo $item['quantity'] ?></p>
-                            <button class='plus' data-id='<?php echo $product_id ?>'>+</button>
-                        </div>
-                    </li>
-                <?php
-                    $totalPrice += $productPriceAddedUp;
-                    $formattedTotalPrice = number_format($totalPrice, 2, ',', '');
-                } ?>
-            </ul>
         </div>
 
-        <footer class="footer">
-            <a href="index.php" class="cancel">
-                <p>Continue ordering</p>
-            </a>
+        <div id="removeItemOverlay" class="popup-container">
+            <div class="bg-overlay"></div>
+            <div class="popup-overlay">
+                <h3>Remove Item</h3>
+                <p>Do you wish to remove this product?</p>
+                <div class="btns">
+                    <button class="popup-btn" onclick="closePopup('removeItemOverlay')">No</button>
+                    <button class="popup-btn" id="confirmRemoveItem">Yes</button>
+                </div>
+            </div>
+        </div>
 
-            <img class="logo" src="assets/img/logodino.webp" alt="logo">
+        <?php
+        if (!empty($_SESSION['cart'])) {
+            // var_dump($_SESSION['cart']);
+        ?>
+            <div class="products">
+                <ul id='cart-list'>
+                    <?php
+                    $totalPrice = 0;
+                    foreach ($_SESSION['cart'] as $product_id => $item) {
+                        $productPriceAddedUp = $item['price'] * $item['quantity'];
+                        $formatedProductPrice = number_format($productPriceAddedUp, 2, ',', '');
+                    ?>
+                        <li>
+                            <!-- all the product stuff -->
+                            <div class="product-info">
+                                <p><?php echo $item['name'] ?></p>
+                                <p class='total-price' data-id='<?php echo $product_id ?>'>€ <?= $formatedProductPrice ?></p>
+                            </div>
 
-            <form action="finishOrder.php">
-                <button class="cart" type="submit" name="finishOrder">
-                    <p id="cart-total">Total: €<?php echo $formattedTotalPrice; ?></p>
-                    <p>Checkout</p>
-                </button>
-            </form>
-        </footer>
-    <?php
-    } else { ?>
-        <p class="empty">Your cart is empty!</p>
-    <?php
-    }
-    ?>
-    <script src="assets/js/js.js"></script>
+                            <div class="amount">
+                                <button class='minus' data-id='<?php echo $product_id ?>'>-</button>
+                                <p class='quantity' data-id='<?php echo $product_id ?>'><?php echo $item['quantity'] ?></p>
+                                <button class='plus' data-id='<?php echo $product_id ?>'>+</button>
+                            </div>
+                        </li>
+                    <?php
+                        $totalPrice += $productPriceAddedUp;
+                        $formattedTotalPrice = number_format($totalPrice, 2, ',', '');
+                    } ?>
+                </ul>
+            </div>
+    </main>
+
+    <footer class="footer">
+        <a href="index.php" class="cancel">
+            <p>Continue ordering</p>
+        </a>
+
+        <img class="logo" src="assets/img/logodino.webp" alt="logo">
+
+        <form action="finishOrder.php">
+            <button class="cart" type="submit" name="finishOrder">
+                <p id="cart-total">Total: €<?php echo $formattedTotalPrice; ?></p>
+                <p>Checkout</p>
+            </button>
+        </form>
+    </footer>
+<?php
+        } else { ?>
+    <p class="empty">Your cart is empty!</p>
+<?php
+        }
+?>
+<script src="assets/js/js.js"></script>
 
 </body>
 

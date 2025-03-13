@@ -109,6 +109,15 @@ h1 {
     text-align: center;
 }
 
+.popup-container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
 .popup-overlay {
     position: absolute;
     top: 50%;
@@ -124,7 +133,6 @@ h1 {
     padding-block: 40px;
     padding-inline: 20px;
     z-index: 1000;
-    display: none;
 }
 
 .popup-btn {
