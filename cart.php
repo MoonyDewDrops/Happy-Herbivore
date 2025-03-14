@@ -82,7 +82,7 @@ include_once 'connection.php';
     </main>
 
     <footer class="footer">
-        <a href="index.php" class="cancel">
+        <a href="menu.php" class="cancel">
             <p>Continue ordering</p>
         </a>
 

@@ -69,7 +69,7 @@ include_once 'connection.php';
                             <div class="add-item">
                                 <p class="price"><span id="total-price">€<?php echo number_format($product['price'], 2, ',', ''); ?></span></p>
 
-                                <form class="form" action="index.php?category_id=<?php echo htmlspecialchars($product['category_id']) ?>" method="post" id="product-form">
+                                <form class="form" action="menu.php?category_id=<?php echo htmlspecialchars($product['category_id']) ?>" method="post" id="product-form">
                                     <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                                     <button type="button" class="minus">-</button>
                                     <input class="quantity" type="number" name="quantity" id="quantity" value="1" min="1" max="99" readonly>
@@ -79,7 +79,7 @@ include_once 'connection.php';
     </main>
 
     <footer class="footer">
-        <a href="index.php?category_id=<?php echo htmlspecialchars($product['category_id']) ?>" class="cancel">
+        <a href="menu.php?category_id=<?php echo htmlspecialchars($product['category_id']) ?>" class="cancel">
             <p>Go back</p>
         </a>
 
