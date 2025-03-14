@@ -5,6 +5,7 @@
     text-align: center;
     gap: 40px;
     padding-inline: 30px;
+    margin-top: 40px;
 }
 
 .name {
@@ -78,6 +79,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 40px;
 
 }
 
@@ -95,7 +97,7 @@
 }
 
 .logo {
-    height: 200px;
+    height: 100%;
 }
 
 .cart {
