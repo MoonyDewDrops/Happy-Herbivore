@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   let foodImages = [
     "assets/img/food.png",
-    "assets/img/Breakfast2.webp", //change to the name of the 2nd image
-    "assets/img/Breakfast3.webp", //you can go on and on w more images or whatever
+    "assets/img/Breakfast22.webp", //change to the name of the 2nd image
+    "assets/img/Breakfast33.webp", //you can go on and on w more images or whatever
   ];
 
   let currentImageIndex = 0;

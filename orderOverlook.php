@@ -35,9 +35,9 @@ if (isset($_SESSION['finalOrderNumber'])) {
         </div>
 
         <script>
-            // setTimeout(function() {
-            //     window.location.href = 'start.php';
-            // }, 5000);
+            setTimeout(function() {
+                window.location.href = 'start.php';
+            }, 5000);
         </script>
     </main>
 
